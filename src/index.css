@@ -1,3 +1,87 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color:#0f172a;
+}
+
+/* Define los estilos comunes a todos los divs */
+.game {
+    position: relative;
+  }
+  
+  .game::before {
+    opacity: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: opacity 0.5s ease;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .game::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(124, 58, 237, 0); /* Rojo semitransparente */
+    transition: background-color 0.5s ease;
+    z-index: 0;
+  }
+  
+  .game:hover::before {
+    opacity: 1;
+  }
+  
+  .game:hover::after {
+    background-color: rgba(124, 58, 237, 0.5);
+  }
+  
+  /* Define los estilos específicos de fondo para cada div */
+  .game1::before {
+    background-image: url('./assets/action.jpg');
+  }
+  
+  .game2::before {
+    background-image: url('./assets/sports.jpg');
+  }
+  
+  .game3::before {
+    background-image: url('./assets/adventure.jpg');
+  }
+  
+  .game4::before {
+    background-image: url('./assets/arcade.jpg');
+  }
+  
+  .game5::before {
+    background-image: url('./assets/fantasy.jpg');
+  }
+  
+  .game6::before {
+    background-image: url('./assets/strategy.jpg');
+  }
+  
+  .game7::before {
+    background-image: url('./assets/shooter.jpg');
+  }
+  .text-container {
+    position: relative;
+    z-index: 1;
+  }
+  
