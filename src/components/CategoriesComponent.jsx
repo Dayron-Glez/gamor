@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { data } from "../utils/data"
 export const CategoriesComponent = ({ setFilteredData }) => {
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('none')
 
   const handleCategory = (categoryName) => {
     if (categoryName === 'all') {
@@ -11,12 +11,11 @@ export const CategoriesComponent = ({ setFilteredData }) => {
       setCategory(categoryName);
     }
   }
-  
   useEffect(() => {
     const filteredData = category === '' ? data : data.filter(game => game.category === category);
     setFilteredData(filteredData);
   }, [category, setFilteredData]);
-
+  
   return (
     <>
 

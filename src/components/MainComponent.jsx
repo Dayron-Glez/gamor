@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { CategoriesComponent } from "./CategoriesComponent"
+import {data} from '../utils/data'
 import gameICon from '../assets/gameIcon.png'
 export const MainComponent = () => {
-  const [filteredData, setFilteredData] = useState([])
+  const [filteredData, setFilteredData] = useState([]);
+  const [valueSearch, setValueSearch] = useState('');
   let fecha = new Date()
   let horas = fecha.getHours()
   let minutos = fecha.getMinutes();
@@ -58,16 +60,35 @@ export const MainComponent = () => {
               </div>
               <div className=" flex flex-col  bg-[#0f172a] h-64 w-80 rounded-lg overflow-y-auto">
                 <div>
-                  <input type="text" className=" w-64 mt-4 h-10 ml-4 rounded-lg bg-[#1e293b]"  placeholder="Search Game by Name"/>
+                  <input 
+                  type="text" 
+                  className=" w-64 mt-4 h-10 ml-4 rounded-lg bg-[#1e293b]"  
+                  placeholder="Search Game by Name"
+                  onChange={(e) =>{setValueSearch(e.target.value)}}
+                  />
                 </div>
-                {filteredData.map(game => (
-                  <div key={game.id} className=" flex flex-col justify-center ml-4 mt-4">
-                    <div className=" flex flex-row items-center">
-                      <img src={gameICon} alt="" className=" size-6"/>
-                      <li className=" list-none">{game.name}</li>
-                    </div>
-                  </div>
-                ))}
+                
+                {valueSearch === '' ? (
+        filteredData.map(game => (
+            <div key={game.id} className=" flex flex-col justify-center ml-4 mt-4">
+                <div className=" flex flex-row items-center">
+                    <img src={gameICon} alt="" className=" size-6"/>
+                    <li className=" list-none">{game.name}</li>
+                </div>
+            </div>
+        ))
+    ) : (
+        data.filter((game) => 
+            game.name.toLowerCase().includes(valueSearch)
+        ).map((game) => (
+            <div key={game.id} className=" flex flex-col justify-center ml-4 mt-4">
+                <div className=" flex flex-row items-center">
+                    <img src={gameICon} alt="" className=" size-6"/>
+                    <li className=" list-none">{game.name}</li>
+                </div>
+            </div>
+        ))
+    )}
               </div>
             </div>
           </div>
