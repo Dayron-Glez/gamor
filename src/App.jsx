@@ -10,9 +10,9 @@ function App() {
 
   return (
     <>
-    <header>
+   
       <NavBarComponent/>
-    </header>
+  
       <div className=' w-full h-full'>
         
         <Routes>
