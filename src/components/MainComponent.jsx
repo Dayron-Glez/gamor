@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { CategoriesComponent } from "./CategoriesComponent"
-import {data} from '../utils/data'
+import { data } from '../utils/data'
 import gameICon from '../assets/gameIcon.png'
+import plusIcon from '../assets/plus.png'
 export const MainComponent = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [valueSearch, setValueSearch] = useState('');
+
   let fecha = new Date()
   let horas = fecha.getHours()
   let minutos = fecha.getMinutes();
@@ -54,41 +56,57 @@ export const MainComponent = () => {
           </div>
           <div className=" flex flex-col justify-center items-center bg-[#1e293b] w-[300px]  h-[400px] mt-8 rounded-r-lg md:w-[220px] md:h-[300px] lg:w-[300px] lg:h-[400px] xl:w-[400px] xl:h-[500px] 2">
             <div className=" flex flex-col w-[100%] justify-center items-center">
-              <div className=" flex flex-row w-80 mb-4">
+              <div className=" flex flex-row w-56 md:w-40 lg:w-60 xl:w-80 mb-4">
                 <p className=" text-[#6b7280] font-semibold">01.</p>
                 <p className=" text-white ml-2 font-semibold">Searching Game</p>
               </div>
-              <div className=" flex flex-col  bg-[#0f172a] h-64 w-80 rounded-lg overflow-y-auto">
+              <div className=" flex flex-col  bg-[#0f172a] h-64 w-56 md:w-40 md:h-52 lg:w-60 lg:h-64 xl:w-80 xl:h-96 rounded-lg overflow-y-auto">
                 <div>
-                  <input 
-                  type="text" 
-                  className=" w-64 mt-4 h-10 ml-4 rounded-lg bg-[#1e293b]"  
-                  placeholder="Search Game by Name"
-                  onChange={(e) =>{setValueSearch(e.target.value)}}
+                  <input
+                    type="text"
+                    className=" w-44 h-10 md:w-32 lg:w-44 xl:w-56 mt-4 ml-4 rounded-lg bg-[#1e293b] pl-1"
+                    placeholder="Search Game by Name"
+                    onChange={(e) => { setValueSearch(e.target.value) }}
                   />
                 </div>
-                
+
                 {valueSearch === '' ? (
-        filteredData.map(game => (
-            <div key={game.id} className=" flex flex-col justify-center ml-4 mt-4">
-                <div className=" flex flex-row items-center">
-                    <img src={gameICon} alt="" className=" size-6"/>
-                    <li className=" list-none">{game.name}</li>
-                </div>
-            </div>
-        ))
-    ) : (
-        data.filter((game) => 
-            game.name.toLowerCase().includes(valueSearch)
-        ).map((game) => (
-            <div key={game.id} className=" flex flex-col justify-center ml-4 mt-4">
-                <div className=" flex flex-row items-center">
-                    <img src={gameICon} alt="" className=" size-6"/>
-                    <li className=" list-none">{game.name}</li>
-                </div>
-            </div>
-        ))
-    )}
+                  filteredData.map(game => (
+                    <div key={game.id} className=" flex flex-row justify-between ml-4 mt-4">
+                      <div className=" flex flex-row items-center">
+                        <img src={gameICon} alt="" className=" size-6" />
+                        <li className=" list-none">{game.name}</li>
+                      </div>
+                      {game.streamers.map((streamer, index) => (
+                        <div key={index} className=" flex items-center ">
+                          <li className=" list-none ml-4 my-2">{streamer.sName}</li>
+                          <button type="button" className=" flex flex-col place-content-center items-center flex-wrap mx-4 size-6 text-center">
+                            <img src={plusIcon} alt="" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  ))
+                ) : (
+                  data.filter((game) =>
+                    game.name.toLowerCase().includes(valueSearch)
+                  ).map((game) => (
+                    <div key={game.id} className=" flex flex-row justify-between ml-4 mt-4">
+                      <div className=" flex flex-row items-center">
+                        <img src={gameICon} alt="" className=" size-6" />
+                        <li className=" list-none">{game.name}</li>
+                      </div>
+                      {game.streamers.map((streamer, index) => (
+                        <div key={index} className=" flex items-center ">
+                          <li className=" list-none ml-4 my-2">{streamer.sName}</li>
+                          <button type="button" className=" flex flex-col place-content-center items-center flex-wrap mx-4 size-6 text-center">
+                            <img src={plusIcon} alt="" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>

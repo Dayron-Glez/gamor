@@ -95,6 +95,9 @@ html {
   mask-image: linear-gradient(to bottom, black 99%, transparent);
 }
 @media (min-width: 370px) {
+  input::placeholder {
+    font-size: 14px;
+  }
   .card2 {
   background-size: auto 250px;
     
@@ -102,6 +105,10 @@ html {
 }
 
 @media (min-width:768px) {
+
+  input::placeholder {
+    font-size: 12px;
+  }
   .card2 {
   background-size: auto 150px;
     
@@ -109,6 +116,10 @@ html {
 }
 
 @media (min-width:1024px) {
+
+  input::placeholder {
+    font-size: 14px;
+  }
   .card2 {
   background-size: auto 250px;
     
