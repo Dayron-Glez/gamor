@@ -3,10 +3,11 @@ import { CategoriesComponent } from "./CategoriesComponent"
 import { data } from '../utils/data'
 import gameICon from '../assets/gameIcon.png'
 import plusIcon from '../assets/plus.png'
+import personIcon from '../assets/person.png'
 export const MainComponent = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [valueSearch, setValueSearch] = useState('');
-
+  const [selectedStreamer, setSelectedStreamer] = useState('');
   let fecha = new Date()
   let horas = fecha.getHours()
   let minutos = fecha.getMinutes();
@@ -49,10 +50,19 @@ export const MainComponent = () => {
           </div>
           <div className=" card2 flex flex-col items-center bg-[#f87316] w-[300px]  h-[400px] mt-8 md:w-[220px] md:h-[300px] lg:w-[300px] lg:h-[400px] xl:w-[400px] xl:h-[500px] 2" >
             <p className=" text-white text-2xl mt-4 mb-2">Fornite New Season</p>
+            {selectedStreamer ? (
+              <div className=" flex flex-row mb-3">
+
+                <img src={personIcon} alt="" className=" size-6" />
+                <p>{selectedStreamer}</p>
+              </div>
+            ) :
             <p className=" text-[#c2410c] font-semibold mb-3">Join Live Stream</p>
+            }
             <div className=" bg-white rounded-3xl py-3 px-5">
               <span className=" text-[#f87316] font-semibold">{strTiempo}</span>
             </div>
+           
           </div>
           <div className=" flex flex-col justify-center items-center bg-[#1e293b] w-[300px]  h-[400px] mt-8 rounded-r-lg md:w-[220px] md:h-[300px] lg:w-[300px] lg:h-[400px] xl:w-[400px] xl:h-[500px] 2">
             <div className=" flex flex-col w-[100%] justify-center items-center">
@@ -72,15 +82,16 @@ export const MainComponent = () => {
 
                 {valueSearch === '' ? (
                   filteredData.map(game => (
-                    <div key={game.id} className=" flex flex-row justify-between ml-4 mt-4">
+                    <div key={game.id} className=" flex flex-col justify-between ml-4 mt-4">
                       <div className=" flex flex-row items-center">
                         <img src={gameICon} alt="" className=" size-6" />
-                        <li className=" list-none">{game.name}</li>
+                        <li className=" list-none my-2">{game.name}</li>
                       </div>
                       {game.streamers.map((streamer, index) => (
                         <div key={index} className=" flex items-center ">
+                          <img src={personIcon} alt="" className=" size-6" />
                           <li className=" list-none ml-4 my-2">{streamer.sName}</li>
-                          <button type="button" className=" flex flex-col place-content-center items-center flex-wrap mx-4 size-6 text-center">
+                          <button onClick={() => setSelectedStreamer(streamer.sName)} type="button" className=" flex flex-col place-content-center items-center flex-wrap mx-4 size-6 text-center">
                             <img src={plusIcon} alt="" />
                           </button>
                         </div>
@@ -91,15 +102,16 @@ export const MainComponent = () => {
                   data.filter((game) =>
                     game.name.toLowerCase().includes(valueSearch)
                   ).map((game) => (
-                    <div key={game.id} className=" flex flex-row justify-between ml-4 mt-4">
+                    <div key={game.id} className=" flex flex-col justify-between ml-4 mt-4">
                       <div className=" flex flex-row items-center">
                         <img src={gameICon} alt="" className=" size-6" />
                         <li className=" list-none">{game.name}</li>
                       </div>
                       {game.streamers.map((streamer, index) => (
                         <div key={index} className=" flex items-center ">
+                          <img src={personIcon} alt="" className=" size-6" />
                           <li className=" list-none ml-4 my-2">{streamer.sName}</li>
-                          <button type="button" className=" flex flex-col place-content-center items-center flex-wrap mx-4 size-6 text-center">
+                          <button onClick={() => setSelectedStreamer(streamer.sName)} type="button" className=" flex flex-col place-content-center items-center flex-wrap mx-4 size-6 text-center">
                             <img src={plusIcon} alt="" />
                           </button>
                         </div>
