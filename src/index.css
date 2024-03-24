@@ -9,7 +9,7 @@
 }
 
 html {
-    background-color:#0f172a;
+    /* background-color:#0f172a; */
     overflow-x: hidden;
 }
 
@@ -87,12 +87,11 @@ html {
   }
 
 .card2 {
-  background-image: url('./assets/fornite2.png');
+  
+  /* background-image: url('./assets/fornite2.png'); */
   background-position: bottom ;
   background-repeat: no-repeat;
   background-size: auto 350px;
-  -webkit-mask-image: linear-gradient(to bottom, black 99%, transparent);
-  mask-image: linear-gradient(to bottom, black 99%, transparent);
 }
 @media (min-width: 370px) {
   input::placeholder {

@@ -4,7 +4,7 @@ import { MainComponent } from "../components/MainComponent"
 export const MainView = () => {
   return (
     <>
-    <div className=" flex flex-col h-[100%] bg-[#0f172a]">
+    <div className=" flex flex-col h-screen bg-slate-100 dark:bg-[#0f172a]">
         <MainComponent/>
     </div>
     </>

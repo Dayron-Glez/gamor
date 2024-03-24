@@ -1,12 +1,39 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-
+import sunIcon from '../assets/sunIcon.png'
+import moonIcon from '../assets/moonIcon.png'
 export const NavBarComponent = ({ usuario, setUsuario}) => {
+  const [theme, setTheme] = useState(() => {
+    if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return 'dark';
+    }
+    return 'light';
+  });
+
+  useEffect(() => {
+    if(theme === 'dark') {
+      document.querySelector('html').classList.add('dark')
+    }
+    else {
+      document.querySelector('html').classList.remove('dark')
+    }
+  }, [theme])
+
+  const handleChangeTheme = () => {
+    setTheme(currentTheme => currentTheme === 'light' ? 'dark' : 'light');
+  }
   return (
     <>
-    <header className=" grid w-[100vw]">
-        <nav className=" grid grid-cols-3 bg-[#0f172a] align-baseline mx-auto sm:w-[900px] md:w-[660px] lg:w-[900px] xl:w-[1200px] justify-around text-white text-[10px] md:text-lg  h-[20%] py-16">
-          
+    <header className=" grid w-[100vw] bg-slate-100 dark:bg-[#0f172a]">
+        <nav className=" grid grid-cols-5 align-baseline mx-auto sm:w-[900px] md:w-[660px] lg:w-[900px] xl:w-[1200px] justify-around dark:text-white text-[10px] md:text-lg  h-[20%] py-16">
+            <button className="" onClick={handleChangeTheme}>
+              {theme === 'dark'?
+              <img src={sunIcon} alt="sunIcon" className=" size-6"/>  
+              :
+              <img src={moonIcon} alt="moonIcon" className=" size-6"/>
+            }
+            </button>
             <Link to='/' className="hover:text-[#f87316] hover:cursor-pointer">Home</Link>
           
           
@@ -14,16 +41,16 @@ export const NavBarComponent = ({ usuario, setUsuario}) => {
          
           <div className=" flex flex-row justify-self-end mr-3">
             {usuario ? 
-            <div>
-              <button onClick={() => setUsuario(null)} className="hover:text-[#f87316] hover:cursor-pointer mr-5">SignOut</button>
-            </div>
+            
+              <button onClick={() => setUsuario(null)} className="hover:text-[#f87316] hover:cursor-pointer justify-self-end">SignOut</button>
+            
             
             :
-            <Link to='/login' className="hover:text-[#f87316] hover:cursor-pointer mr-5">SignIn</Link>
+            <Link to='/login' className="hover:text-[#f87316] hover:cursor-pointer mr-5 justify-self-end">SignIn</Link>
             
             }
-            <p className=" hover:text-[#f87316] hover:cursor-pointer">Create Account</p>
           </div>
+            <p className=" hover:text-[#f87316] hover:cursor-pointer justify-self-end">Create Account</p>
           
         </nav>
     </header>

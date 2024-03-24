@@ -13,15 +13,15 @@ export const LoginView = ({setUsuario}) => {
   }
   return (
     <>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex h-screen flex-col px-6 pt-12 lg:px-8 bg-slate-100 dark:bg-[#0f172a]">
   <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign in to your account</h2>
+    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight dark:text-white">Sign in to your account</h2>
   </div>
 
   <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
     <form className="space-y-6" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name" className="block text-sm font-medium leading-6 text-white">Name</label>
+        <label htmlFor="name" className="block text-sm font-medium leading-6 dark:text-white">Name</label>
         <div className="mt-2">
           <input id="name" name="name" type="text"  required className="block border-2 w-full rounded-md py-1.5 text-gray-900 shadow-sm outline-none placeholder:text-gray-400 focus:border-[#f87316]  sm:text-sm sm:leading-6" placeholder=' Enter your name'/>
         </div>
@@ -29,7 +29,7 @@ export const LoginView = ({setUsuario}) => {
 
       <div>
         <div className="flex items-center justify-between">
-          <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">Password</label>
+          <label htmlFor="password" className="block text-sm font-medium leading-6 dark:text-white">Password</label>
           
         </div>
         <div className="mt-2">
