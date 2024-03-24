@@ -26,7 +26,7 @@ export const NavBarComponent = ({ usuario, setUsuario}) => {
   return (
     <>
     <header className=" grid w-[100vw] bg-slate-100 dark:bg-[#0f172a]">
-        <nav className=" grid grid-cols-5 align-baseline mx-auto sm:w-[900px] md:w-[660px] lg:w-[900px] xl:w-[1200px] justify-around dark:text-white text-[10px] md:text-lg  h-[20%] py-16">
+        <nav className=" grid grid-cols-5 align-baseline mx-auto sm:w-[900px] md:w-[660px] lg:w-[900px] xl:w-[1200px] justify-around dark:text-white text-[9px] md:text-lg  h-[20%] py-16">
             <button className="" onClick={handleChangeTheme}>
               {theme === 'dark'?
               <img src={sunIcon} alt="sunIcon" className=" size-6"/>  
@@ -42,7 +42,7 @@ export const NavBarComponent = ({ usuario, setUsuario}) => {
           <div className=" flex flex-row justify-self-end mr-3">
             {usuario ? 
             
-              <button onClick={() => setUsuario(null)} className="hover:text-[#f87316] hover:cursor-pointer justify-self-end">SignOut</button>
+              <button onClick={() => setUsuario(null)} className="hover:text-[#f87316] hover:cursor-pointer mr-5 justify-self-end self-baseline">SignOut</button>
             
             
             :

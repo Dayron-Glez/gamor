@@ -9,11 +9,11 @@
 }
 
 html {
-    /* background-color:#0f172a; */
+    
     overflow-x: hidden;
 }
 
-/* Define los estilos comunes a todos los divs */
+
 .game {
     position: relative;
   }
@@ -40,7 +40,7 @@ html {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(124, 58, 237, 0); /* Rojo semitransparente */
+    background-color: rgba(124, 58, 237, 0);
     transition: background-color 0.1s ease;
     z-index: 0;
   }
@@ -53,7 +53,7 @@ html {
     background-color: rgba(124, 58, 237, 0.5);
   }
   
-  /* Define los estilos específicos de fondo para cada div */
+  
   .game1::before {
     background-image: url('./assets/action.jpg');
   }
@@ -88,7 +88,6 @@ html {
 
 .card2 {
   
-  /* background-image: url('./assets/fornite2.png'); */
   background-position: bottom ;
   background-repeat: no-repeat;
   background-size: auto 350px;

@@ -49,7 +49,7 @@ export const MainComponent = () => {
               </div>
             </div>
           </div>
-          <div className=" card2 bg-light-theme dark:bg-dark-theme shadow-md flex flex-col items-center bg-[#7e22ce] dark:bg-[#f87316] w-[300px]  h-[400px] mt-8 md:w-[220px] md:h-[300px] lg:w-[300px] lg:h-[400px] xl:w-[400px] xl:h-[500px] 2" >
+          <div className=" card2 rounded-md md:rounded-none bg-light-theme dark:bg-dark-theme shadow-md flex flex-col items-center bg-[#7e22ce] dark:bg-[#f87316] w-[300px]  h-[400px] mt-8 md:w-[220px] md:h-[300px] lg:w-[300px] lg:h-[400px] xl:w-[400px] xl:h-[500px] 2" >
             <p className=" text-white text-2xl mt-4 mb-2">Fornite New Season</p>
             {selectedStreamer ? (
               <div className=" flex flex-row mb-3">
