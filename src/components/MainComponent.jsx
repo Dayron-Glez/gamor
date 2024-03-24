@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
 import { CategoriesComponent } from "./CategoriesComponent"
 import { data } from '../utils/data'

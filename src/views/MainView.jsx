@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { MainComponent } from "../components/MainComponent"
 
 export const MainView = () => {
